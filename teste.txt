@@ -2,4 +2,3 @@
 2) git commit -m "minha mensagem"
 3) git push
 4) altera pela interface gráfica
-5) trocar de branch: git checkout  
