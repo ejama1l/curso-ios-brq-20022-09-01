@@ -29,7 +29,7 @@ struct ContentView: View {
     @State var isAddView : Bool = false
     
     var body: some View {
-
+        
         NavigationView{
             VStack{
                 
@@ -38,19 +38,19 @@ struct ContentView: View {
                     .padding()
                 
                 List{
-
+                    
                     ForEach(food) { foodElement in
                         
-                        NavigationLink(destination: EditFoodView ( isAddView: $isAddView, food: foodElement ) ) {
+                        NavigationLink(destination: EditFoodView( isAddView: $isAddView, food: foodElement )){
                             
-                            Text(foodElement.name ?? "")
-                                .bold()
+                            FoodDetailView(foodName: foodElement.name ??  "", foodCalories: foodElement.calories, foodDate: foodElement.date ?? Date())
                             
-                        }
+                        }// NavigationLink
                         
-                    }
+                    } // Foreach
+                    .onDelete(perform: deleteFood )
                 }// list
-                
+                .navigationTitle( "ALScalories" )
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing){
                         Button{
@@ -64,15 +64,85 @@ struct ContentView: View {
                     AddFoodView()
                 }// sheet
             }// Vstack
-
-        
+            
+            
         }// NavigationView
         
     }// body
     
+    func deleteFood(offset:IndexSet) {
+        DataController().deleteFood(offsets: offset, context: managedObjectContext, food: food)
+    } // deleteFood
+    
     func getTotalCalories() -> Double{
+        
+        // ler todos os elementos da lista e somar as calorias
+        
+        var sum : Double = 0.0
+        
+        for item in food{
+            
+            if let myDate = item.date{
+                // se a data do item da comiga for igual a hj, então somo as calorias
+                if Calendar.current.isDateInToday(myDate){
+                    sum += item.calories
+                }
+            }
+            // Kcal
+        }
+        
+        return sum
+    } // getTotalCalories
+    
+    // 30 segundos atrás
+    
+    
+}
+
+struct FoodDetailView : View{
+    
+    var foodName : String = ""
+    var foodCalories : Double = 0.0
+    var foodDate : Date = Date()
+    
+    var body: some View{
+        
+        HStack{
+            
+            // nome e calorias um embaixo do outro
+            VStack(alignment: .leading, spacing: 5){
+                Text(foodName )
+                    .bold()
                 
-        return 0.0
+                Text("\(Int(foodCalories))  ") + Text("calories").foregroundColor(.red)
+            }// VSTACK
+            
+            Spacer()
+            
+            Text( calcTimeSince(date:foodDate) )
+            
+            
+        }// HStack
+    }
+}
+
+func calcTimeSince(date : Date) -> String{
+    
+    // return date.formatted()
+    
+    // quantos minutos se passaram da data de parâmetro até agora
+    let minutes = Int(-date.timeIntervalSinceNow)/60
+    let hours = minutes / 60
+    let days = hours / 24
+    
+    if minutes < 120 {
+        return "\(minutes) minutos atrás"
+    }
+    else if (minutes >= 120 && hours < 48){
+        return "\(hours) horas atrás"
+    }
+    else {
+        return "\(days) dias atrás"
     }
 }
 
