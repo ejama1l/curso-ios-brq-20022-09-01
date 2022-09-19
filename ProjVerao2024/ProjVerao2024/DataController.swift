@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 /**
  
@@ -20,7 +21,22 @@ import CoreData
  
  */
 
-class DataController {
+class DataController : ObservableObject {
+    
+    let container = NSPersistentContainer(name: "FoodModel")
+    
+    init(){
+        
+    /**
+     Quando inicializa-se o container (NSPersistentContainer) , é necessario
+     carregar os objetos do CoreData para poder ser manipulados
+     */
+        container.loadPersistentStores{description, error in if let errorIfLet = error {
+                print("Erro ao carregar os dados \(errorIfLet)")
+            }
+        }
+        
+    }
     
     func save(context: NSManagedObjectContext){
         do {
@@ -50,7 +66,21 @@ class DataController {
     }
     
     
-    func editFood(){
+    func editFood(foodOld: Food , name: String , calories: Double, context: NSManagedObjectContext){
+        foodOld.name = name
+        foodOld.calories = calories
+        foodOld.date = Date()
         
+        save(context: context)
+    }
+    
+    func deleteFood(offsets: IndexSet, context: NSManagedObjectContext, food: FetchedResults<Food>){
+        
+        offsets.map{food[$0]}
+            .forEach( context.delete )
+        
+        save(context: context)
     }
 }
+
+

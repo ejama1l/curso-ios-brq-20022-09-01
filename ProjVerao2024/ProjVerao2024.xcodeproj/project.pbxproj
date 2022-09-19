@@ -13,6 +13,8 @@
 		881F2CB828D3B72D00896E46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 881F2CB728D3B72D00896E46 /* Preview Assets.xcassets */; };
 		881F2CC028D3B85D00896E46 /* FoodModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 881F2CBE28D3B85D00896E46 /* FoodModel.xcdatamodeld */; };
 		881F2CC328D3BD4100896E46 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F2CC228D3BD4100896E46 /* DataController.swift */; };
+		88588FF328D5053F00543459 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88588FF228D5053F00543459 /* AddFoodView.swift */; };
+		887992EE28D8E52200705A93 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887992ED28D8E52200705A93 /* EditFoodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		881F2CB728D3B72D00896E46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		881F2CBF28D3B85D00896E46 /* FoodModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodModel.xcdatamodel; sourceTree = "<group>"; };
 		881F2CC228D3BD4100896E46 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = ProjVerao2024/DataController.swift; sourceTree = SOURCE_ROOT; };
+		88588FF228D5053F00543459 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		887992ED28D8E52200705A93 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 		881F2CA428D3B72C00896E46 = {
 			isa = PBXGroup;
 			children = (
+				887992ED28D8E52200705A93 /* EditFoodView.swift */,
 				881F2CAF28D3B72C00896E46 /* ProjVerao2024 */,
 				881F2CAE28D3B72C00896E46 /* Products */,
 			);
@@ -58,6 +63,7 @@
 				881F2CC128D3BB8800896E46 /* DataModel */,
 				881F2CB028D3B72C00896E46 /* ProjVerao2024App.swift */,
 				881F2CB228D3B72C00896E46 /* ContentView.swift */,
+				88588FF228D5053F00543459 /* AddFoodView.swift */,
 				881F2CB428D3B72D00896E46 /* Assets.xcassets */,
 				881F2CB628D3B72D00896E46 /* Preview Content */,
 			);
@@ -151,7 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88588FF328D5053F00543459 /* AddFoodView.swift in Sources */,
 				881F2CB328D3B72C00896E46 /* ContentView.swift in Sources */,
+				887992EE28D8E52200705A93 /* EditFoodView.swift in Sources */,
 				881F2CC328D3BD4100896E46 /* DataController.swift in Sources */,
 				881F2CB128D3B72C00896E46 /* ProjVerao2024App.swift in Sources */,
 				881F2CC028D3B85D00896E46 /* FoodModel.xcdatamodeld in Sources */,
