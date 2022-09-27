@@ -54,6 +54,9 @@ class ViewModel : ObservableObject {
                 return
             } //if
             
+            /**
+             Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.
+             */
             do {
                 if let data  = data{
                     let result = try JSONDecoder().decode([ProfessorModel].self, from: data)
@@ -106,7 +109,9 @@ class ViewModel : ObservableObject {
                 if let data = data{
                     let result = try JSONDecoder().decode(ProfessorModel.self, from: data)
                     
-//                    print("CREATE : \(result.id)")
+                    print("CREATE : \(result.id)")
+                    
+                    self.fetchProfessores()
                 }
             }//do
             catch {
@@ -156,6 +161,8 @@ class ViewModel : ObservableObject {
                     let result = try JSONDecoder().decode(ProfessorModel.self, from: data)
                     
                     print("UPDATE : \(result.id)")
+                    
+                    self.fetchProfessores()
                 }
             }//do
             catch {
@@ -184,6 +191,8 @@ class ViewModel : ObservableObject {
                 print("error: \(error!)")
                 return
             }// if
+            
+            self.fetchProfessores()
             
             //resume executa a tarefa
         }.resume()

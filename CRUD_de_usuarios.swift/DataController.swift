@@ -11,7 +11,7 @@ import SwiftUI
 
 class DataController{
     
-    let container = NSPersistentContainer(name: "UserModel")
+    let container = NSPersistentContainer(name: "DadosUsers")
       
       init(){
           container.loadPersistentStores  { description, error in

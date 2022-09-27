@@ -23,21 +23,9 @@ struct ContentView: View {
                 
                 
             }
-            
-            Button(""){
-                
-            }
-            
-            Button(""){
-                
-            }
-            
-            Button(""){
-                
-            }
-            
+           
         }
-        .padding()
+        
     }
 }
 

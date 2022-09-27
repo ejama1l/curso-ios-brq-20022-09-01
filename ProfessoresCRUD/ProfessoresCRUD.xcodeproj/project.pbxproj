@@ -11,8 +11,8 @@
 		8859E0A328DB831B00C05542 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859E0A228DB831B00C05542 /* ContentView.swift */; };
 		8859E0A528DB831B00C05542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8859E0A428DB831B00C05542 /* Assets.xcassets */; };
 		8859E0A828DB831B00C05542 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8859E0A728DB831B00C05542 /* Preview Assets.xcassets */; };
-		8859E0B028DB85D000C05542 /* ProfessorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859E0AF28DB85D000C05542 /* ProfessorModel.swift */; };
 		8859E0B228DB86C700C05542 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859E0B128DB86C700C05542 /* ViewModel.swift */; };
+		887DC24128E36FF8005F27A0 /* EditProfessores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DC24028E36FF8005F27A0 /* EditProfessores.swift */; };
 		88A977F528DCF33600CC3951 /* AddProfessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A977F428DCF33600CC3951 /* AddProfessor.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +22,8 @@
 		8859E0A228DB831B00C05542 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8859E0A428DB831B00C05542 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8859E0A728DB831B00C05542 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8859E0AF28DB85D000C05542 /* ProfessorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorModel.swift; sourceTree = "<group>"; };
 		8859E0B128DB86C700C05542 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		887DC24028E36FF8005F27A0 /* EditProfessores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfessores.swift; sourceTree = "<group>"; };
 		88A977F428DCF33600CC3951 /* AddProfessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				88A977F428DCF33600CC3951 /* AddProfessor.swift */,
+				887DC24028E36FF8005F27A0 /* EditProfessores.swift */,
 				8859E09F28DB831B00C05542 /* ProfessoresCRUD */,
 				8859E09E28DB831B00C05542 /* Products */,
 			);
@@ -78,7 +79,6 @@
 		8859E0AE28DB854B00C05542 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				8859E0AF28DB85D000C05542 /* ProfessorModel.swift */,
 				8859E0B128DB86C700C05542 /* ViewModel.swift */,
 			);
 			path = DataModel;
@@ -154,11 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8859E0B028DB85D000C05542 /* ProfessorModel.swift in Sources */,
 				8859E0A328DB831B00C05542 /* ContentView.swift in Sources */,
 				88A977F528DCF33600CC3951 /* AddProfessor.swift in Sources */,
 				8859E0B228DB86C700C05542 /* ViewModel.swift in Sources */,
 				8859E0A128DB831B00C05542 /* ProfessoresCRUDApp.swift in Sources */,
+				887DC24128E36FF8005F27A0 /* EditProfessores.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

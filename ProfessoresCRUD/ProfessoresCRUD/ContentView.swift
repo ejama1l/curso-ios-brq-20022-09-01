@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var viewModel : ViewModel
-    @Binding var isAddView : Bool
     
+    @State var isAddView : Bool = false
     
     var body: some View {
         
@@ -23,10 +23,14 @@ struct ContentView: View {
                     /**
                         o parâmetro id é utilizado para saber como identificar unicamente cada objeto. Para isso, ele espera qual atributo do PROFESSORMODEL possa ser utilizado para esta identificação. Então, temos que usar o  \.NOMEDAVARIAVEL.
                      */
-                    ForEach(viewModel.items, id: \.id){ item in
+                    ForEach(viewModel.items.sorted(by: {$0.id>$1.id}), id: \.id){ item in
                         
                         VStack{
-                            Text("\(item.nome)")
+                            //Text("\(item.nome)")
+                            NavigationLink(destination: EditProfessorView(professor: item), label: {
+                                Text("\(item.nome)")
+                            })
+                            // EditProfessorView ( professor : item )
                         }// Vstack
                     }// Foreach
                     .onDelete(perform: deleteProfessores)
@@ -34,8 +38,26 @@ struct ContentView: View {
                 } // List
                 
                 .toolbar{
-                     AddProfessor()
+                    ToolbarItem (placement: .navigationBarTrailing){
+                        Button( action: {
+                            isAddView = true
+                        }, label: {
+                            Label("Add Professor", systemImage: "plus.circle")
+                        } )
+                    } // ToolbarItem
+                    
+                    ToolbarItem (placement: .navigationBarLeading){
+                        Button( action: {
+                            // chama o edit
+                        }, label: {
+                            Label("Editar", systemImage: "pencil.circle")
+                        } )
+                    } // ToolbarItem
+                } // toolbar
+                .sheet(isPresented: $isAddView){
+                    AddProfessoresView()
                 }
+                
             } // NavigationView
         }// VSTACK
     } // body
@@ -61,6 +83,8 @@ struct ContentView: View {
         for i in idsArray{
             viewModel.deleteProfessores(id: i)
         }
+        
+        //viewModel.fetchProfessores()
                 
     }
 }
@@ -89,6 +113,6 @@ struct ButtonsTestView : View{
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ViewModel())
     }
 }

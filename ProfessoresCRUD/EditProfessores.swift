@@ -1,19 +1,22 @@
 //
-//  AddProfessor.swift
+//  EditProfessores.swift
 //  ProfessoresCRUD
 //
-//  Created by user226757 on 9/22/22.
+//  Created by user226757 on 9/27/22.
 //
 
 import SwiftUI
 
-struct AddProfessoresView: View {
+struct EditProfessorView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel : ViewModel
     
     @State var nome : String = ""
     @State var email : String = ""
+    
+    // vai receber o objeto a ser alterado
+    @State var professor : ProfessorModel
     
     var body: some View {
         
@@ -23,36 +26,39 @@ struct AddProfessoresView: View {
                 VStack{
                     Text("Nome")
                     TextField("Nome", text: $nome)
-                }
+                } // VStack
                 
                 Spacer()
                 
                 VStack{
                     Text("Email")
                     TextField("Email", text: $email)
-                }
+                } // VStack
                 
                 Spacer()
                 
                 HStack{
                     Spacer()
-                    Button("Salvar"){
+                    Button("Editar"){
                         
-                        viewModel.createProfessor(nome: nome, email: email)
+                        viewModel.updateProfessores(id: professor.id, nome: nome, email: email)
                         
                         // para fechar o modal
                         dismiss()
-                    }
-                }
-                
+                    } // Button
+                }//HStack
+                .onAppear(perform: {
+                    self.nome = professor.nome
+                    self.email = professor.email
+                })
 
-            }
-        }
+            } // Section
+        } // Form
     }
 }
 
-struct AddProfessoresView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddProfessoresView()
-    }
-}
+//struct EditProfessorView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfessorView()
+//    }
+//}
