@@ -15,7 +15,7 @@ struct MenuMyUser : View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest ( sortDescriptors: [SortDescriptor(\.date, order : .reverse)] ) var users: FetchedResults<Users>
+    @FetchRequest ( sortDescriptors: [SortDescriptor(\.date, order : .reverse)] ) var user: FetchedResults<Users>
     
     @State var isAddView : Bool = false
     
@@ -26,16 +26,16 @@ struct MenuMyUser : View {
                 
                 List{
                     
-                    ForEach(users) { userElement in
+                    ForEach(user) { userElement in
                         
-                        NavigationLink(destination: EditUser( isAddView: $isAddView, users: userElement )){
+                        NavigationLink(destination: EditUserView (isAddView: $isAddView, user : userElement)){
                             
-                            UserDetailView(foodName: userElement.name ??  "", userDate: userElement.date ?? Date())
+                            UserDetailView(userName: userElement.name ??  "", userDate: userElement.date ?? Date())
                             
                         }
                         
                     }
-                    .onDelete(perform: deleteUser )
+                   
                 }
                 .navigationTitle( "MyUsers" )
                 .toolbar{
@@ -46,9 +46,9 @@ struct MenuMyUser : View {
                             Label("Add Label", systemImage: "plus.circle")
                         }
                     }
-                }// toolbar
+                }
                 .sheet(isPresented: $isAddView){
-                    AddUser(isAddView: $isAddView)
+                    AddUserView()
                 }
             }
             
@@ -60,9 +60,7 @@ struct MenuMyUser : View {
     
 }
 
-func deleteUser(offset:IndexSet) {
-    DataController().deleteUser(offsets: offset, context: managedObjectContext, user: Users)
-}
+
 
 
 struct UserDetailView : View{
@@ -87,7 +85,7 @@ struct UserDetailView : View{
             Text( calcTimeSince(date: userDate) )
             
             
-        }// HStack
+        }
     }
 }
 
@@ -109,9 +107,9 @@ func calcTimeSince(date : Date) -> String{
     }
 }
 
-struct ContentViewPreviews: PreviewProvider {
+struct MenuMyUser_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MenuMyUser()
     }
 }
 

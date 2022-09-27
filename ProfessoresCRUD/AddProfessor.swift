@@ -16,7 +16,7 @@ struct AddProfessor: View {
     }
 }
 
-struct AddProfessor_Previews: PreviewProvider {
+struct AddProfessorPreviews: PreviewProvider {
     static var previews: some View {
         AddProfessor()
     }

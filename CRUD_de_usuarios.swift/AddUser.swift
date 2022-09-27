@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddFoodView: View {
+struct AddUserView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
@@ -27,6 +27,7 @@ struct AddFoodView: View {
                 VStack{
                     TextField("Password", text: $password)
                     TextField("Email", text: $email )
+                    
 
 
                 }.padding()
@@ -43,8 +44,8 @@ struct AddFoodView: View {
     }
 }
 
-struct AddFoodView_Previews: PreviewProvider {
+struct AddUserViewPreviews: PreviewProvider {
     static var previews: some View {
-        AddFoodView()
+        AddUserView()
     }
 }
